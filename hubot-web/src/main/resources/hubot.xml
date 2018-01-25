@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration version="0.1">
+	<hubot-interface name="seeRequestForOvertime" executable="true">
+	    <description>查看用户个人的加班申请情况</description>
+	    <title>你的加班申请表</title>
+	    <regexpSentence>查看我的加班申请</regexpSentence>
+	    <entryUrl>http://192.168.1.161:8069/rocket</entryUrl>
+	    <redirectUrl>http://192.168.1.161:8069/web/#min=1&amp;limit=80&amp;view_type=list&amp;model=apply.for.overtime&amp;action=518&amp;menu_id=324</redirectUrl>
+	</hubot-interface>
+	<hubot-interface name="addRequestForOvertime" executable="true">
+	    <description>代替用户填写加班申请单</description>
+	    <title>处理完毕，这是你的加班申请表</title>
+	    <regexpSentence>我要申请加班</regexpSentence>
+	    <postObject>
+	        <object>
+	    		<entry key="model" type="string">apply.for.overtime</entry>
+	        	<entry key="method" type="string">create</entry>
+	        	<entry key="args" type="list">
+	        		<list>
+	        			<object>
+	        				<entry key="startTime" type="date" regexp="开始时间" />
+				    		<entry key="endTime" type="date" regexp="结束时间" />
+				    		<entry key="isCommit" type="boolean" regexp="提交" />
+	        			</object>
+	        		</list>
+				</entry>
+				<entry key="kwargs" type="object">
+					<object>
+						<entry key="context" type="object">
+							<object>
+								<entry key="lang" type="string">zh_CN</entry>
+								<entry key="tz" type="string">Asia/Hong_Kong</entry>
+							</object>
+						</entry>
+					</object>
+				</entry>
+	        </object>
+	    </postObject>
+	    <entryUrl>http://192.168.1.161:8069/rocket</entryUrl>
+	    <redirectUrl>http://192.168.1.161:8069/web/#min=1&amp;limit=80&amp;view_type=list&amp;model=apply.for.overtime&amp;action=518&amp;menu_id=324</redirectUrl>
+	</hubot-interface>
+</configuration>
